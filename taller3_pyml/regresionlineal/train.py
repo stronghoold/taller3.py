@@ -1,3 +1,5 @@
+import matplotlib
+matplotlib.use('Agg')  # backend sin pantalla (para Docker)
 import joblib
 import numpy as np
 import matplotlib.pyplot as plt
@@ -35,8 +37,12 @@ plt.title('Regresión Lineal: Precio de Viviendas segun Superficie (m2)')
 plt.legend()
 plt.grid(True)
 
-#imprimir
-plt.show()
+#guardar grafico (en Docker no hay pantalla)
+plt.savefig('grafico_regresion.png')
+plt.close()
 
 #guardar el modelo entrenado en un archivo
-joblib.dump(model, 'Modelos_ML/RegresionLineal/models/linear_model.joblib')
+from pathlib import Path
+model_dir = Path('Modelos_ML/RegresionLineal/models')
+model_dir.mkdir(parents=True, exist_ok=True)
+joblib.dump(model, model_dir / 'linear_model.joblib')
