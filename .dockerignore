@@ -1,8 +1,26 @@
+# Entorno virtual y artefactos de Python
 venv/
 .venv/
 __pycache__/
-*.pyc
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+test_*.py
+tests.py
+
+# Control de versiones y metadata
 .git/
 .gitignore
 *.md
-DocKerfile
+
+# Notebooks y datos de ejemplo que no usa la API
+*.ipynb
+Carga_datos/
+Modelos_ML/RandomForest/
+
+# El frontend Django se despliega como servicio aparte
+Modelos_ML/RegresionLineal/front/
+
+# Sistema operativo
+.DS_Store
+Thumbs.db

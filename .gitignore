@@ -1,0 +1,18 @@
+# Entornos virtuales
+venv/
+.venv/
+
+# Cache de Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Base de datos de Django (se genera con manage.py migrate)
+db.sqlite3
+
+# Entornos y editores
+.env
+.env.*
+.idea/
+.vscode/
+.DS_Store
