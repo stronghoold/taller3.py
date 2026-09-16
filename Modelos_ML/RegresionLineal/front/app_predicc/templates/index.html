@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predicción de Precios</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 24px;
+            padding: 44px 40px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        h1 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 4px;
+            text-align: center;
+        }
+
+        .emoji {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 12px;
+        }
+
+        .subtitle {
+            color: #888;
+            font-size: 0.85rem;
+            margin-bottom: 28px;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #764ba2;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid #e8e8e8;
+            border-radius: 14px;
+            font-size: 1rem;
+            color: #1a1a1a;
+            background: #f9f9ff;
+            outline: none;
+            transition: border-color 0.2s, background 0.2s;
+        }
+
+        input[type="number"]:focus {
+            border-color: #667eea;
+            background: #fff;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 14px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .result {
+            margin-top: 24px;
+            padding: 20px;
+            border-radius: 16px;
+            text-align: center;
+        }
+
+        .result.success {
+            background: linear-gradient(135deg, #d4fc79 0%, #96e6a1 100%);
+        }
+
+        .result.error {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+        }
+
+        .result-label {
+            font-size: 0.75rem;
+            color: rgba(0, 0, 0, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+
+        .result-value {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #1a5c2e;
+        }
+
+        .result.error .result-value {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #8b1a1a;
+        }
+
+        .result-area {
+            font-size: 0.8rem;
+            color: rgba(0, 0, 0, 0.4);
+            margin-top: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="emoji">🏠</div>
+        <h1>Predicción de Viviendas</h1>
+        <p class="subtitle">Ingresa la superficie en metros cuadrados</p>
+
+        <form method="POST" action="{% url 'home' %}">
+            {% csrf_token %}
+            <label for="area_m2">Superficie</label>
+            <input
+                type="number"
+                id="area_m2"
+                name="area_m2"
+                step="0.1"
+                min="0.1"
+                placeholder="Ej: 82.5"
+                value="{{ area|default:'' }}"
+                required
+            >
+            <button type="submit">Predecir precio 🚀</button>
+        </form>
+
+        {% if resultado %}
+        <div class="result success">
+            <div class="result-label">Precio estimado</div>
+            <div class="result-value">{{ resultado }}</div>
+            <div class="result-area">Para {{ area }} m²</div>
+        </div>
+        {% endif %}
+
+        {% if error %}
+        <div class="result error">
+            <div class="result-value">{{ error }}</div>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>

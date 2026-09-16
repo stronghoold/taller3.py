@@ -1,41 +1,46 @@
-import joblib
 from pathlib import Path
-
+import joblib
 import numpy as np
+import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
 
-# Predecir precios de viviendas segun la superficie en m2
+# predecir precios de viviendas segun la superficie en M2
 
-# Datos de entrenamiento (X) y etiquetas (y)
-x = np.array([[40], [50], [60], [90], [100], [120]])
-y = np.array([210000000, 300000000, 350000000, 500000000, 600000000, 700000000])
+# datos de entrenamiento (x) y etiquetas (y)
+x = np.array([[40], [50], [60], [85], [100], [150]])
+y = np.array([10000000, 12000000, 15000000, 20000000, 25000000, 30000000])
 
-# Entrenar el modelo de regresion lineal
+# entrenar el modelo de regresion lineal
 model = LinearRegression()
 model.fit(x, y)
 
-# Predicciones de prueba
+# predicciones de prueba
 y_pred = model.predict(x)
 
-# Imprimir la informacion del modelo entrenado
-print("Coeficiente de regresion:", model.coef_[0])
-print("Termino independiente:", model.intercept_)
+# imprimir la informacion del modelo entrenado
+print("Coeficiente de regression: ", model.coef_[0])
+print("Termino independiente: ", model.intercept_)
 
-# Graficar datos reales (requiere matplotlib y un backend sin pantalla: MPLBACKEND=Agg)
-# plt.scatter(x, y, color='red', label='Datos de entrenamiento')
-# plt.plot(x, y_pred, color='blue', label='Linea de regresion')
-# plt.xlabel('Superficie (m2)')
-# plt.ylabel('Precio (COP)')
-# plt.title('Regresion Lineal: Precio de Viviendas segun Superficie (m2)')
-# plt.legend()
-# plt.grid(True)
-# plt.show()
+# graficar datos reales
+plt.scatter(x, y, color='red', label='Datos reales')
 
-# Guardar el artefacto del modelo entrenado en un archivo
+# graficar la linea de regresion
+plt.plot(x, y_pred, color='blue', label='Línea de regresión')
+
+plt.xlabel('Superficie (m2)')
+plt.ylabel('Precio (COP)')
+plt.title('Regresión Lineal: Precio de Viviendas segun Superficie (m2)')
+plt.legend()
+plt.grid(True)
+
+# imprimir
+plt.show()
+
 BASE_DIR = Path(__file__).resolve().parent
-MODEL_DIR = BASE_DIR / "models"
-MODEL_PATH = MODEL_DIR / "linear_model.joblib"
+MODEL_PATH = BASE_DIR / "models/linear_model.joblib"
 
-MODEL_DIR.mkdir(parents=True, exist_ok=True)
+# crear la carpeta "models" si no existe
+MODEL_PATH.parent.mkdir(parents=True, exist_ok=True)
+
+# guardar el modelo entrenado en un archivo
 joblib.dump(model, MODEL_PATH)
-print("Modelo guardado en:", MODEL_PATH)

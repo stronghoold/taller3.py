@@ -1,19 +1,11 @@
-FROM python:3.12-slim
-
-ENV PYTHONDONTWRITEBYTECODE=1 \
-    PYTHONUNBUFFERED=1 \
-    PORT=8000
+FROM python:3.11-slim
 
 WORKDIR /app
 
-# Dependencias primero para aprovechar la cache de capas
 COPY requirements.txt .
-RUN pip install --no-cache-dir --upgrade pip \
-    && pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-EXPOSE 8000
-
-# Prepara la base de datos y arranca Django con Gunicorn en el puerto de Railway.
-CMD ["sh", "-c", "python manage.py migrate --noinput; exec gunicorn config.wsgi:application --bind 0.0.0.0:${PORT:-8000} --workers 2 --timeout 60"]
+# Comando para correr Django en producción usando Gunicorn
+CMD gunicorn config.wsgi:application --bind 0.0.0.0:${PORT:-8000}
