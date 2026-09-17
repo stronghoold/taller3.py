@@ -1,0 +1,205 @@
+/* ==========================================================
+   TEMA OSCURO SIMPLE
+   ========================================================== */
+:root {
+  --bg-main: #1a1d24;
+  --bg-card: #23262f;
+  --bg-surface: #2b2f3a;
+  --border-color: #3a3f4b;
+  --text-main: #e8e9ed;
+  --text-muted: #9aa0ac;
+  --accent: #4f8cff;
+  --accent-success: #2fbf71;
+  --accent-danger: #e05263;
+  --accent-warning: #e0a63d;
+}
+ 
+body.bg-app {
+  background: var(--bg-main) !important;
+  color: var(--text-main);
+}
+ 
+/* ==========================================================
+   HEADER
+   ========================================================== */
+header.app-header {
+  background: var(--bg-card) !important;
+  border-bottom: 1px solid var(--border-color);
+}
+ 
+header.app-header h1 {
+  color: var(--text-main);
+}
+ 
+header.app-header p {
+  color: var(--text-muted) !important;
+}
+ 
+/* ==========================================================
+   TOGGLE DE MODO
+   ========================================================== */
+.btn-group .btn {
+  border: 1px solid var(--border-color);
+  background: var(--bg-card);
+  color: var(--text-muted);
+}
+ 
+.btn-group .btn:hover {
+  background: var(--bg-surface);
+  color: var(--text-main);
+}
+ 
+.btn-group .btn.active,
+.btn-group .btn.btn-primary.active {
+  background: var(--accent) !important;
+  border-color: var(--accent) !important;
+  color: #fff !important;
+}
+ 
+/* ==========================================================
+   TARJETAS
+   ========================================================== */
+.glass-card {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 8px !important;
+}
+ 
+.bg-surface {
+  background: var(--bg-surface) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 6px;
+}
+ 
+.bg-surface h6,
+.text-muted {
+  color: var(--text-muted) !important;
+}
+ 
+/* ==========================================================
+   ZONA DE ARRASTRAR IMAGEN
+   ========================================================== */
+#dropZone {
+  border: 2px dashed var(--border-color) !important;
+  background: var(--bg-surface) !important;
+  border-radius: 6px !important;
+  cursor: pointer;
+}
+ 
+#dropZone:hover {
+  border-color: var(--accent) !important;
+}
+ 
+#dropZone.bg-primary.bg-opacity-10 {
+  background: rgba(79, 140, 255, 0.1) !important;
+  border-color: var(--accent) !important;
+}
+ 
+#dropZone p {
+  color: var(--text-muted) !important;
+}
+ 
+.drop-zone-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+ 
+/* ==========================================================
+   BOTONES
+   ========================================================== */
+.btn-success {
+  background: var(--accent-success) !important;
+  border-color: var(--accent-success) !important;
+}
+ 
+.btn-success:disabled {
+  background: var(--bg-surface) !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-muted) !important;
+}
+ 
+.btn-primary {
+  background: var(--accent) !important;
+  border-color: var(--accent) !important;
+}
+ 
+.btn-outline-primary {
+  border-color: var(--border-color) !important;
+  color: var(--text-muted) !important;
+}
+ 
+.btn-outline-primary:hover {
+  background: var(--bg-surface) !important;
+  color: var(--text-main) !important;
+}
+ 
+.btn-warning {
+  background: var(--accent-warning) !important;
+  border-color: var(--accent-warning) !important;
+  color: #201400 !important;
+}
+ 
+.btn-danger {
+  background: var(--accent-danger) !important;
+  border-color: var(--accent-danger) !important;
+}
+ 
+button:disabled {
+  opacity: 0.5;
+}
+ 
+/* ==========================================================
+   CÁMARA
+   ========================================================== */
+#sectionCamera .bg-black {
+  background: #000 !important;
+  border: 1px solid var(--border-color);
+  border-radius: 6px !important;
+}
+ 
+/* ==========================================================
+   ALERTA DE MÉTRICAS
+   ========================================================== */
+#metricsZone.alert-success {
+  background: rgba(47, 191, 113, 0.15) !important;
+  border: 1px solid var(--accent-success) !important;
+  color: var(--text-main) !important;
+  border-radius: 6px;
+}
+ 
+#faceCount.badge.bg-success {
+  background: var(--accent-success) !important;
+}
+ 
+/* ==========================================================
+   IMÁGENES Y LOADER
+   ========================================================== */
+video,
+img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 4px;
+}
+ 
+#loader.spinner-border.text-primary {
+  color: var(--accent) !important;
+}
+ 
+.transition {
+  transition: border-color 0.2s ease;
+}
+ 
+/* ==========================================================
+   FOOTER
+   ========================================================== */
+footer.app-footer {
+  background: var(--bg-card) !important;
+  border-top: 1px solid var(--border-color) !important;
+  color: var(--text-muted) !important;
+}
