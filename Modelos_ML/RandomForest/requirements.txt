@@ -4,3 +4,6 @@ scikit-learn
 pandas
 numpy
 plotly
+opencv-python-headless
+numpy
+pillow

@@ -1,4 +1,9 @@
 # :camera: py_img: Detección de rostros en imágenes y videos en tiempo real
+link de vercel: taller3-kftt4fj9x-mongo-db1.vercel.app
+
+link de back y frontend de tasador de viviendas:
+taller3py-production.up.railway.app
+back-production-00bd.up.railway.app
 
 Este proyecto proporciona una aplicación web para la detección de rostros en tiempo real utilizando Python, Flask, OpenCV y Bootstrap.
 

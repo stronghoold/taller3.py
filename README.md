@@ -1,3 +1,10 @@
+# :camera: py_img: Detección de rostros en imágenes y videos en tiempo real
+link de vercel: taller3-kftt4fj9x-mongo-db1.vercel.app
+
+link de back y frontend de tasador de viviendas:
+taller3py-production.up.railway.app
+back-production-00bd.up.railway.app
+
 # Taller 3 - Python y Machine Learning
 
 Proyecto con carga de datos, un modelo de clasificacion (Random Forest) y un
